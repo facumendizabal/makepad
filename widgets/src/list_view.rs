@@ -247,6 +247,15 @@ impl ListView {
         // move the scrollbar to the right 'top' position
         self.scroll_bar.set_scroll_pos_no_action(cx, scroll_pos);
     }
+
+    pub fn scroll_to_item(&mut self, item_id: u64) {
+        if item_id >= self.range_start && item_id < self.range_end {
+            self.top_id = item_id;
+            self.top_scroll = 0.0; // not sure if this is correct
+        } else {
+            // TODO: handle invalid item id
+        }
+    }
 }
 
 #[derive(Clone)]
